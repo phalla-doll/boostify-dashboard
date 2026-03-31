@@ -54,7 +54,7 @@ export default function Dashboard() {
           <span className="text-xl font-normal tracking-wide">Boostify</span>
         </div>
 
-        <div className="hidden md:flex items-center gap-2 text-sm text-zinc-400 bg-[#1A1C19] p-1 rounded-full border border-[#2A2D28]">
+        <div className="hidden lg:flex items-center gap-2 text-sm text-zinc-400 bg-[#1A1C19] p-1 rounded-full border border-[#2A2D28]">
           <a href="#" className="px-6 py-2 rounded-full bg-[#C4F06A] text-black font-normal transition-colors">Dashboard</a>
           <a href="#" className="px-6 py-2 rounded-full hover:text-zinc-100 transition-colors">Customers</a>
           <a href="#" className="px-6 py-2 rounded-full hover:text-zinc-100 transition-colors">Products</a>
@@ -89,7 +89,7 @@ export default function Dashboard() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-6 flex-1">
             <h1 className="text-4xl font-normal tracking-tight">Dashboard</h1>
-            <div className="relative max-w-md w-full hidden sm:block">
+            <div className="relative max-w-md w-full hidden lg:block">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
               <input
                 type="text"
@@ -98,16 +98,17 @@ export default function Dashboard() {
               />
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <button className="w-11 h-11 rounded-full border border-[#2A2D28] bg-[#1A1C19] hover:bg-[#222520] transition-colors text-zinc-400 flex items-center justify-center">
+          <div className="flex flex-wrap items-center gap-3">
+            <button className="w-11 h-11 rounded-full border border-[#2A2D28] bg-[#1A1C19] hover:bg-[#222520] transition-colors text-zinc-400 flex items-center justify-center shrink-0">
               <Settings className="w-4 h-4" />
             </button>
-            <button className="px-6 py-3 rounded-full border border-[#2A2D28] bg-[#1A1C19] hover:bg-[#222520] transition-colors text-sm flex items-center gap-2">
-              Download Report
+            <button className="px-6 py-3 rounded-full border border-[#2A2D28] bg-[#1A1C19] hover:bg-[#222520] transition-colors text-sm flex items-center gap-2 whitespace-nowrap">
+              <Download className="w-4 h-4" />
+              <span>Download Report</span>
             </button>
-            <button className="px-6 py-3 rounded-full bg-[#C4F06A] text-black hover:bg-[#b3e05a] transition-colors text-sm flex items-center gap-2 font-normal">
+            <button className="px-6 py-3 rounded-full bg-[#C4F06A] text-black hover:bg-[#b3e05a] transition-colors text-sm flex items-center gap-2 font-normal whitespace-nowrap">
               <Sparkles className="w-4 h-4" />
-              AI Assistant
+              <span>AI Assistant</span>
             </button>
           </div>
         </div>
@@ -118,14 +119,14 @@ export default function Dashboard() {
           {/* Left Column */}
           <div className="lg:col-span-3 space-y-6">
             {/* Total Volume */}
-            <div className="bg-zinc-100 text-black rounded-3xl p-6 flex flex-col justify-between h-[220px]">
+            <div className="bg-zinc-100 text-black rounded-3xl p-6 flex flex-col justify-between min-h-[220px]">
               <div className="flex justify-between items-start">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-5xl font-normal tracking-tight">300</span>
                     <span className="px-2 py-0.5 rounded-full bg-[#C4F06A] text-xs font-normal">+16.5%</span>
                   </div>
-                  <div className="text-sm text-zinc-600 leading-relaxed">Total volume of services<br/>provided</div>
+                  <div className="text-sm text-zinc-600 leading-relaxed max-w-[160px]">Total volume of services provided</div>
                 </div>
                 <div className="w-12 h-12 rounded-full border border-zinc-300 flex items-center justify-center">
                   <Clock className="w-5 h-5 text-zinc-600" />
@@ -137,7 +138,7 @@ export default function Dashboard() {
             </div>
 
             {/* New Clients */}
-            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 flex flex-col justify-between h-[220px]">
+            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 flex flex-col justify-between min-h-[220px]">
               <div className="flex justify-between items-start">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
@@ -156,14 +157,14 @@ export default function Dashboard() {
             </div>
 
             {/* 4 Small Cards */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { label: 'Advertising', value: '30%' },
                 { label: 'Development', value: '25%' },
                 { label: 'Sales', value: '30%' },
                 { label: 'Management', value: '15%' },
               ].map((item, i) => (
-                <div key={i} className="bg-[#1A1C19] border border-[#2A2D28] rounded-2xl p-5 flex justify-between items-end h-[100px]">
+                <div key={i} className="bg-[#1A1C19] border border-[#2A2D28] rounded-2xl p-5 flex justify-between items-end min-h-[100px]">
                   <div>
                     <div className="text-2xl font-normal mb-1">{item.value}</div>
                     <div className="text-xs text-zinc-500">{item.label}</div>
@@ -177,11 +178,11 @@ export default function Dashboard() {
           {/* Middle Column */}
           <div className="lg:col-span-4 space-y-6">
             {/* Customer Satisfaction */}
-            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 h-[464px] flex flex-col">
+            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 min-h-[464px] flex flex-col">
               <h3 className="text-xl font-normal mb-8">Customer Satisfaction</h3>
               
-              <div className="relative flex-1 flex items-center justify-center mb-8">
-                <div className="w-56 h-56 relative">
+              <div className="relative w-full h-[224px] flex items-center justify-center mb-8">
+                <div className="w-full h-full max-w-[224px] relative">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <defs>
@@ -232,15 +233,15 @@ export default function Dashboard() {
             </div>
 
             {/* Operating Expenses */}
-            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 h-[320px] flex flex-col">
-              <div className="flex justify-between items-center mb-8">
+            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 min-h-[320px] flex flex-col">
+              <div className="flex justify-between items-start sm:items-center mb-8 flex-col sm:flex-row gap-4">
                 <h3 className="text-xl font-normal">Operating expenses</h3>
-                <button className="text-sm text-[#C4F06A] underline decoration-[#C4F06A]/30 underline-offset-4 hover:decoration-[#C4F06A] transition-colors">
+                <button className="text-sm text-[#C4F06A] underline decoration-[#C4F06A]/30 underline-offset-4 hover:decoration-[#C4F06A] transition-colors text-left">
                   After AI implementation
                 </button>
               </div>
               
-              <div className="flex-1 w-full relative">
+              <div className="w-full h-[250px] relative mt-4">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={expensesData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#2A2D28" />
@@ -284,14 +285,14 @@ export default function Dashboard() {
                 </button>
               </div>
 
-              <div className="flex justify-between items-end mb-6">
+              <div className="flex justify-between items-start sm:items-end mb-6 flex-col sm:flex-row gap-4">
                 <div>
                   <div className="text-sm text-[#C4F06A] mb-1">Current result</div>
-                  <div className="text-4xl font-normal tracking-tight text-[#C4F06A]">$22,567,081.00</div>
+                  <div className="text-3xl sm:text-4xl font-normal tracking-tight text-[#C4F06A]">$22,567,081.00</div>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <div className="text-sm text-zinc-400 mb-1">Left plan</div>
-                  <div className="text-2xl font-normal tracking-tight">$8,432,119.00</div>
+                  <div className="text-xl sm:text-2xl font-normal tracking-tight">$8,432,119.00</div>
                 </div>
               </div>
 
@@ -302,10 +303,10 @@ export default function Dashboard() {
             </div>
 
             {/* Company Sales Target */}
-            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 h-[460px] flex flex-col relative">
-              <div className="flex justify-between items-center mb-8">
+            <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 min-h-[460px] flex flex-col relative">
+              <div className="flex justify-between items-start sm:items-center mb-8 flex-col sm:flex-row gap-4">
                 <h3 className="text-xl font-normal">Company sales target</h3>
-                <div className="flex gap-4 text-sm">
+                <div className="flex flex-wrap gap-3 sm:gap-4 text-sm">
                   <button className="text-[#C4F06A] underline decoration-[#C4F06A]/30 underline-offset-4">Year</button>
                   <button className="text-zinc-500 hover:text-zinc-300 transition-colors">Quarter</button>
                   <button className="text-zinc-500 hover:text-zinc-300 transition-colors">Month</button>
@@ -313,7 +314,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="flex-1 w-full relative">
+              <div className="w-full h-[300px] relative mt-4">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={salesData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#2A2D28" />
@@ -345,7 +346,7 @@ export default function Dashboard() {
                 </ResponsiveContainer>
                 
                 {/* Custom Tooltip Overlay for the highlighted bar */}
-                <div className="absolute top-4 left-[65%] -translate-x-1/2 bg-white text-black px-4 py-2.5 rounded-2xl shadow-lg flex items-center gap-4 z-10">
+                <div className="hidden md:flex absolute top-4 left-[65%] -translate-x-1/2 bg-white text-black px-4 py-2.5 rounded-2xl shadow-lg items-center gap-4 z-10">
                   <div>
                     <div className="font-normal text-sm">$972,000.00</div>
                     <div className="text-xs text-zinc-500">Sep, 2024</div>
@@ -354,7 +355,7 @@ export default function Dashboard() {
                 </div>
                 
                 {/* Highlighted Bar Line */}
-                <div className="absolute top-16 bottom-6 left-[65%] w-0.5 bg-[#C4F06A] pointer-events-none flex flex-col items-center">
+                <div className="hidden md:flex absolute top-16 bottom-6 left-[65%] w-0.5 bg-[#C4F06A] pointer-events-none flex-col items-center">
                   <div className="w-2 h-2 rounded-full bg-[#C4F06A] -mt-1"></div>
                 </div>
               </div>
@@ -365,12 +366,12 @@ export default function Dashboard() {
             </div>
 
             {/* AI Implementation Cards */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 flex flex-col justify-between h-[180px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 flex flex-col justify-between min-h-[180px]">
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl font-normal tracking-tight">$320,500.00</span>
+                      <span className="text-2xl sm:text-3xl font-normal tracking-tight">$320,500.00</span>
                       <span className="px-2 py-0.5 rounded-full bg-[#FF7A70]/20 text-[#FF7A70] text-xs font-normal">-8.5%</span>
                     </div>
                     <div className="text-sm text-zinc-400">Before AI implementation</div>
@@ -384,11 +385,11 @@ export default function Dashboard() {
                 </button>
               </div>
 
-              <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 flex flex-col justify-between h-[180px]">
+              <div className="bg-[#1A1C19] border border-[#2A2D28] rounded-3xl p-6 flex flex-col justify-between min-h-[180px]">
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl font-normal tracking-tight">$480,500.00</span>
+                      <span className="text-2xl sm:text-3xl font-normal tracking-tight">$480,500.00</span>
                       <span className="px-2 py-0.5 rounded-full bg-[#C4F06A] text-black text-xs font-normal">+16.5%</span>
                     </div>
                     <div className="text-sm text-zinc-400">After AI implementation</div>
