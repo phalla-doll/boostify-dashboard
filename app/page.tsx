@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Bell, ChevronDown, Download, Settings, Sparkles, Search, ArrowUpRight, Users, Clock, RefreshCw, Cpu, X } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell, PieChart, Pie, ReferenceLine } from 'recharts';
 import Image from 'next/image';
@@ -43,6 +44,11 @@ const CustomBarLabel = (props: any) => {
 };
 
 export default function Dashboard() {
+  const [activeTab, setActiveTab] = useState('Dashboard');
+  const [timeRange, setTimeRange] = useState('Year');
+  const tabs = ['Dashboard', 'Customers', 'Products', 'Analytics', 'Reporting'];
+  const timeRanges = ['Year', 'Quarter', 'Month', 'Week'];
+
   return (
     <div className="min-h-screen bg-[#111210] text-zinc-100 font-light selection:bg-[#C4F06A] selection:text-black">
       {/* Top Navigation */}
@@ -55,11 +61,19 @@ export default function Dashboard() {
         </div>
 
         <div className="hidden lg:flex items-center gap-2 text-sm text-zinc-400 bg-[#1A1C19] p-1 rounded-full border border-[#2A2D28]">
-          <a href="#" className="px-6 py-2 rounded-full bg-[#C4F06A] text-black font-normal transition-colors">Dashboard</a>
-          <a href="#" className="px-6 py-2 rounded-full hover:text-zinc-100 transition-colors">Customers</a>
-          <a href="#" className="px-6 py-2 rounded-full hover:text-zinc-100 transition-colors">Products</a>
-          <a href="#" className="px-6 py-2 rounded-full hover:text-zinc-100 transition-colors">Analytics</a>
-          <a href="#" className="px-6 py-2 rounded-full hover:text-zinc-100 transition-colors">Reporting</a>
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-6 py-2 rounded-full transition-colors ${
+                activeTab === tab
+                  ? 'bg-[#C4F06A] text-black font-normal'
+                  : 'hover:text-zinc-100'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
         <div className="flex items-center gap-6">
@@ -307,10 +321,19 @@ export default function Dashboard() {
               <div className="flex justify-between items-start sm:items-center mb-8 flex-col sm:flex-row gap-4">
                 <h3 className="text-xl font-normal">Company sales target</h3>
                 <div className="flex flex-wrap gap-3 sm:gap-4 text-sm">
-                  <button className="text-[#C4F06A] underline decoration-[#C4F06A]/30 underline-offset-4">Year</button>
-                  <button className="text-zinc-500 hover:text-zinc-300 transition-colors">Quarter</button>
-                  <button className="text-zinc-500 hover:text-zinc-300 transition-colors">Month</button>
-                  <button className="text-zinc-500 hover:text-zinc-300 transition-colors">Week</button>
+                  {timeRanges.map((range) => (
+                    <button
+                      key={range}
+                      onClick={() => setTimeRange(range)}
+                      className={`transition-colors ${
+                        timeRange === range
+                          ? 'text-[#C4F06A] underline decoration-[#C4F06A]/30 underline-offset-4'
+                          : 'text-zinc-500 hover:text-zinc-300'
+                      }`}
+                    >
+                      {range}
+                    </button>
+                  ))}
                 </div>
               </div>
 
